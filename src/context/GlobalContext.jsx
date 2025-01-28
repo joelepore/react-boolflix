@@ -10,7 +10,6 @@ export const GlobalContext = ({ children }) => {
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [globalState, setGlobalState] = useState()
   const [selectedGenre, setSelectedGenre] = useState(0);
 
   const searchMovieEndpoint = `https://api.themoviedb.org/3/search/movie?include_adult=true&language=it-IT&page=1&query=${search}`;
