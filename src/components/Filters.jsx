@@ -1,6 +1,9 @@
+import SearchBar from './SearchBar'
 const Filters = () => {
   return (
-    <div>Filters</div>
+    <div>
+      <SearchBar />
+    </div>
   )
 }
 
