@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { ContextProvider } from "../context/GlobalContext"
 
 const SearchBar = () => {
-  const { search, setSearch, searchMovies } = useContext(ContextProvider);
+  const { search, setSearch, searchDb } = useContext(ContextProvider);
 
   return (
     <div className="flex">
@@ -14,7 +14,7 @@ const SearchBar = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button onClick={searchMovies} className="text-2xl px-2 bg-neutral-900 cursor-pointer"><BiSearch /></button>
+      <button onClick={searchDb} className="text-2xl px-2 bg-neutral-900 cursor-pointer"><BiSearch /></button>
     </div>
   )
 }
