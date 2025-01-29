@@ -15,6 +15,7 @@ const Card = ({ data }) => {
       language = 'JP';
       break;
     case 'HI':
+    case 'TA':
       language = 'IN';
       break;
     case 'KO':
@@ -23,10 +24,14 @@ const Card = ({ data }) => {
     case 'DA':
       language = 'DK';
       break;
+    case 'ZH':
+      language = 'CN';
+      break;
   }
 
-  const flagApiEndpoint = `https://flagsapi.com/${language}/flat/32.png`
-  const imageApiEndpoint = `https://image.tmdb.org/t/p/w342`
+  const flagApiEndpoint = `https://flagsapi.com/${language}/flat/32.png`;
+  const imageApiEndpoint = `https://image.tmdb.org/t/p/w342`;
+  const imagePlaceholderEndpoint = `https://placehold.co/400x600`;
 
   const getRatingStars = () => {
     const stars = [];
@@ -42,7 +47,7 @@ const Card = ({ data }) => {
         className="card-poster absolute -z-10"
         src={`${imageApiEndpoint}/${data['poster_path']}`}
         alt={data.title || data.name}
-        onError={(e) => e.currentTarget.src = `https://via.assets.so/img.jpg?w=200&h=300&tc=blue&bg=#cecece`}
+        onError={(e) => e.currentTarget.src = imagePlaceholderEndpoint}
       />
       <ul className="w-full h-full bg-black opacity-0 hover:opacity-90 transition-opacity cursor-pointer p-4">
         <li className="text-xl font-bold">{data.title || data.name}</li>
