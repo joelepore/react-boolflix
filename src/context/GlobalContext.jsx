@@ -9,7 +9,7 @@ export const GlobalContext = ({ children }) => {
   const [series, setSeries] = useState([]);
   const [search, setSearch] = useState('');
   const [genres, setGenres] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(0);
 
