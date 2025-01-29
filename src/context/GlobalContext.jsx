@@ -36,6 +36,8 @@ export const GlobalContext = ({ children }) => {
   }
 
   const searchDb = () => {
+    setSelectedGenre(0);
+    setSearch('');
     setIsLoading(true);
     setIsSearching(true);
     searchMovies();

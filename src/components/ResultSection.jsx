@@ -4,12 +4,16 @@ import { useContext, useEffect, useState } from 'react'
 
 const ResultSection = ({ title, data }) => {
 
-  const { selectedGenre } = useContext(ContextProvider);
+  const { selectedGenre, movies, series } = useContext(ContextProvider);
   const [filteredTitles, setFilteredTitles] = useState(data);
 
   useEffect(() => {
-    setFilteredTitles(data.filter(item => item.genre_ids.includes(selectedGenre)));
-  }, [selectedGenre])
+    if (selectedGenre == 0) {
+      setFilteredTitles(data);
+    } else {
+      setFilteredTitles(data.filter(item => item.genre_ids.includes(selectedGenre)));
+    }
+  }, [selectedGenre, movies, series])
 
   return (
     <section className='pb-8 px-4'>
