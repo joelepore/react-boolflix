@@ -42,14 +42,14 @@ const Card = ({ data }) => {
   }
 
   return (
-    <div className="relative card">
+    <div className="relative card ">
       <img
         className="card-poster absolute -z-10"
         src={`${imageApiEndpoint}/${data['poster_path']}`}
         alt={data.title || data.name}
         onError={(e) => e.currentTarget.src = imagePlaceholderEndpoint}
       />
-      <ul className="w-full h-full bg-black opacity-0 hover:opacity-90 transition-opacity cursor-pointer p-4">
+      <ul className="w-full h-full bg-black opacity-0 hover:opacity-90 transition-opacity cursor-pointer p-4 overflow-y-scroll no-scrollbar">
         <li className="text-xl font-bold">{data.title || data.name}</li>
         <li className="text-sm py-1">{data['original_title'] || data['original_name']}</li>
         <li className="flex items-center gap-2 text-xs"><img src={flagApiEndpoint} alt="" />{language}</li>
