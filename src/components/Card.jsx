@@ -9,13 +9,19 @@ const Card = ({ data }) => {
       language = 'GB';
       break;
     case 'KN':
-      language = 'KR';
+      language = 'HI';
       break;
     case 'JA':
       language = 'JP';
       break;
     case 'HI':
       language = 'IN';
+      break;
+    case 'KO':
+      language = "KR";
+      break;
+    case 'DA':
+      language = 'DK';
       break;
   }
 
@@ -41,7 +47,7 @@ const Card = ({ data }) => {
       <ul className="w-full h-full bg-black opacity-0 hover:opacity-90 transition-opacity cursor-pointer p-4">
         <li className="text-xl font-bold">{data.title || data.name}</li>
         <li className="text-sm py-1">{data['original_title'] || data['original_name']}</li>
-        <li><img src={flagApiEndpoint} alt="" /></li>
+        <li className="flex items-center gap-2 text-xs"><img src={flagApiEndpoint} alt="" />{language}</li>
         <li>
           <ul className="flex mt-2 text-yellow-400">
             {getRatingStars().map((star, index) => (
