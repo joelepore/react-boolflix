@@ -12,8 +12,8 @@ const SearchPage = () => {
         <Loader /> :
         (
           <>
-            <ResultSection title="Film" data={movies} />
-            <ResultSection title="Serie" data={series} />
+            <ResultSection title="Film" data={movies} type="movie" />
+            <ResultSection title="Serie" data={series} type="tv" />
           </>
 
         )

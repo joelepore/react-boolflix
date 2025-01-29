@@ -2,7 +2,7 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import { ContextProvider } from "../context/GlobalContext";
 import { useContext } from "react";
 
-const Card = ({ data }) => {
+const Card = ({ data, onClick }) => {
   const { genres } = useContext(ContextProvider);
 
   let language = data['original_language'].toUpperCase();
@@ -50,7 +50,7 @@ const Card = ({ data }) => {
   }
 
   return (
-    <div className="relative card ">
+    <div className="relative card " onClick={onClick}>
       <img
         className="card-poster absolute -z-10"
         src={`${imageApiEndpoint}/${data['poster_path']}`}

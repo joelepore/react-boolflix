@@ -5,11 +5,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useNavigate } from 'react-router-dom';
 
-const ResultSection = ({ title, data }) => {
+const ResultSection = ({ title, data, type }) => {
 
   const { selectedGenre, movies, series, isLoading } = useContext(ContextProvider);
   const [filteredTitles, setFilteredTitles] = useState(data);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (selectedGenre == 0) {
@@ -33,7 +35,7 @@ const ResultSection = ({ title, data }) => {
           >
             {filteredTitles.map(item => (
               <SwiperSlide key={item.id}>
-                <Card data={item} />
+                <Card data={item} onClick={() => navigate(`/${type}/${item.id}`)} />
               </SwiperSlide>
             ))}
           </Swiper>
