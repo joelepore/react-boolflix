@@ -1,7 +1,10 @@
 import { FaStar, FaRegStar } from "react-icons/fa";
-
+import { ContextProvider } from "../context/GlobalContext";
+import { useContext } from "react";
 
 const Card = ({ data }) => {
+  const { genres } = useContext(ContextProvider);
+
   let language = data['original_language'].toUpperCase();
   const rating = Math.round(data['vote_average'] / 2);
 
@@ -54,7 +57,9 @@ const Card = ({ data }) => {
         alt={data.title || data.name}
         onError={(e) => e.currentTarget.src = imagePlaceholderEndpoint}
       />
-      <ul className="w-full h-full bg-black opacity-0 hover:opacity-90 transition-opacity cursor-pointer p-4 overflow-y-scroll no-scrollbar">
+      <ul
+        className="w-full h-full bg-black opacity-0 hover:opacity-90 transition-opacity cursor-pointer p-4 overflow-y-scroll no-scrollbar"
+      >
         <li className="text-xl font-bold">{data.title || data.name}</li>
         <li className="text-sm py-1">{data['original_title'] || data['original_name']}</li>
         <li className="flex items-center gap-2 text-xs"><img src={flagApiEndpoint} alt="" />{language}</li>
@@ -62,6 +67,17 @@ const Card = ({ data }) => {
           <ul className="flex mt-2 text-yellow-400">
             {getRatingStars().map((star, index) => (
               <li key={index}>{star}</li>
+            ))}
+          </ul>
+        </li>
+        {/* Genres */}
+        <li>
+          <ul className="flex flex-wrap text-xs gap-2 mt-4">
+            {data.genre_ids.map(genreId => (
+              <li
+                key={genreId}
+                className="py-1 px-3 bg-neutral-800 rounded-full"
+              >{genres.find(genre => genre.id === genreId).name}</li>
             ))}
           </ul>
         </li>
