@@ -20,22 +20,26 @@ const ResultSection = ({ title, data }) => {
   }, [selectedGenre, movies, series, isLoading])
 
   return (
-    <section className='pb-8 px-4'>
-      {filteredTitles.length > 0 && <h2 className="text-3xl font-bold pb-4">{title}</h2>}
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={12}
-        slidesPerView={6}
-        navigation={true}
-        loop
-      >
-        {filteredTitles.map(item => (
-          <SwiperSlide key={item.id}>
-            <Card data={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+    <>
+      {filteredTitles.length > 0 && (
+        <section className='pb-8 px-4'>
+          <h2 className="text-3xl font-bold pb-4">{title}</h2>
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={12}
+            slidesPerView={6}
+            navigation={true}
+            loop
+          >
+            {filteredTitles.map(item => (
+              <SwiperSlide key={item.id}>
+                <Card data={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+      )}
+    </>
   )
 }
 
