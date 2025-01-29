@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Loader from '../components/Loader'
 import Actor from "../components/Actor";
 
-const MovieDetailPage = () => {
+const SeriesDetailPage = () => {
   const baseApiUrl = import.meta.env.VITE_BASE_API_URL;
   const apiKey = import.meta.env.VITE_API_AUTH_KEY;
   const baseImgUrl = import.meta.env.VITE_BASE_IMG_URL;
   const { id } = useParams();
-  const movieDetailEndpoint = `/movie/${id}`;
+  const seriesDetailEndpoint = `/tv/${id}`;
 
-  const [movie, setMovie] = useState(null);
+  const [series, setSeries] = useState(null);
   const [cast, setCast] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,19 +24,19 @@ const MovieDetailPage = () => {
     }
   }
 
-  const fetchMovie = async () => {
-    const response = await axios.get(baseApiUrl + movieDetailEndpoint, options);
-    setMovie(response.data);
+  const fetchSeries = async () => {
+    const response = await axios.get(baseApiUrl + seriesDetailEndpoint, options);
+    setSeries(response.data);
   }
 
   const fetchCast = async () => {
-    const res = await axios.get(`${baseApiUrl}${movieDetailEndpoint}/credits`, options);
+    const res = await axios.get(`${baseApiUrl}${seriesDetailEndpoint}/credits`, options);
     setCast(res.data.cast);
   }
 
   const fetchData = async () => {
     setIsLoading(true);
-    await fetchMovie();
+    await fetchSeries();
     await fetchCast();
     // isLoading verra' settato a false dall'img onLoad
   }
@@ -52,12 +52,12 @@ const MovieDetailPage = () => {
       <main className="relative">
         <img
           className="absolute -z-20 h-full object-cover w-full"
-          src={`${baseImgUrl}/${movie?.backdrop_path}>`}
-          alt={movie?.title}
+          src={`${baseImgUrl}/${series?.backdrop_path}>`}
+          alt={series?.name}
           onLoad={handleOnLoad}
           onError={e => e.target.src = `https://placehold.co/1920x1080`}
         />
-        {isLoading && (movie === null || cast === null)
+        {isLoading && (series === null || cast === null)
           ?
           <Loader />
           :
@@ -68,13 +68,13 @@ const MovieDetailPage = () => {
               </div>
               <div className="container mx-auto py-24 grid grid-cols-1 md:grid-cols-2 h-full items-center">
                 <div className="">
-                  <h1 className="text-5xl font-bold">{movie?.title}</h1>
-                  <h3 className="text-2xl">{movie?.original_title}</h3>
-                  <p className="py-5">{movie?.overview}</p>
+                  <h1 className="text-5xl font-bold">{series?.name}</h1>
+                  <h3 className="text-2xl">{series?.original_name}</h3>
+                  <p className="py-5">{series?.overview}</p>
                   <div className="my-4">
                     <strong className="mb-2 inline-block">Generi</strong>
                     <ul className="flex flex-wrap gap-2">
-                      {movie?.genres.map(genre => (
+                      {series?.genres.map(genre => (
                         <li className="px-3 bg-neutral-800 rounded-full" key={genre.id}>{genre.name}</li>
                       ))}
                     </ul>
@@ -97,4 +97,4 @@ const MovieDetailPage = () => {
   )
 }
 
-export default MovieDetailPage
+export default SeriesDetailPage

@@ -5,6 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 import DetailLayout from "./layouts/DetailLayout"
 import HomePage from "./pages/HomePage"
 import MovieDetailPage from "./pages/MovieDetailPage"
+import SeriesDetailPage from "./pages/SeriesDetailPage"
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           </Route>
           <Route Component={DetailLayout}>
             <Route path="/movie/:id" Component={MovieDetailPage} />
+            <Route path="/tv/:id" Component={SeriesDetailPage} />
           </Route>
         </Routes>
       </BrowserRouter>
