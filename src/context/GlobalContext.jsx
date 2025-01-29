@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export const ContextProvider = createContext();
 
@@ -10,9 +9,9 @@ export const GlobalContext = ({ children }) => {
   const [series, setSeries] = useState([]);
   const [search, setSearch] = useState('');
   const [genres, setGenres] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState('');
+  const [selectedGenre, setSelectedGenre] = useState(0);
 
   const baseApiUrl = `https://api.themoviedb.org/3`;
   const searchMovieEndpoint = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=it-IT&page=1&query=${search}`;
@@ -48,6 +47,7 @@ export const GlobalContext = ({ children }) => {
     navigateToSearchPage();
   }
 
+  // Prendo tutti i generi dall'api e unisco gli array con elementi univoci
   useEffect(() => (
     async () => {
       const movieGenres = await fetchGenres('movie');
@@ -64,6 +64,7 @@ export const GlobalContext = ({ children }) => {
     search,
     setSearch,
     isLoading,
+    setIsLoading,
     isSearching,
     selectedGenre,
     setSelectedGenre,

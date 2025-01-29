@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 
 const ResultSection = ({ title, data }) => {
 
-  const { selectedGenre, movies, series } = useContext(ContextProvider);
+  const { selectedGenre, movies, series, isLoading } = useContext(ContextProvider);
   const [filteredTitles, setFilteredTitles] = useState(data);
 
   useEffect(() => {
@@ -17,11 +17,11 @@ const ResultSection = ({ title, data }) => {
     } else {
       setFilteredTitles(data.filter(item => item.genre_ids.includes(selectedGenre)));
     }
-  }, [selectedGenre, movies, series])
+  }, [selectedGenre, movies, series, isLoading])
 
   return (
     <section className='pb-8 px-4'>
-      {filteredTitles.length > 0 && <h2 className="uppercase text-3xl font-bold py-2">{title}</h2>}
+      {filteredTitles.length > 0 && <h2 className="text-3xl font-bold pb-4">{title}</h2>}
       <Swiper
         modules={[Navigation]}
         spaceBetween={12}
@@ -35,8 +35,6 @@ const ResultSection = ({ title, data }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* <div className='grid grid-cols-3 sm:grid-cols-6 gap-4'>
-      </div> */}
     </section>
   )
 }

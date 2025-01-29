@@ -77,7 +77,7 @@ const Card = ({ data }) => {
               <li
                 key={genreId}
                 className="py-1 px-3 bg-neutral-800 rounded-full"
-              >{genres.find(genre => genre.id === genreId).name}</li>
+              >{genres.find(genre => genre.id === genreId)?.name}</li>
             ))}
           </ul>
         </li>
