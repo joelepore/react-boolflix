@@ -69,13 +69,13 @@ const MovieDetailPage = () => {
               </div>
               <div className="container mx-auto py-24 grid grid-cols-1 md:grid-cols-2 h-full items-center">
                 <div className="">
-                  <h1 className="text-5xl font-bold">{movie.title}</h1>
-                  <h3 className="text-2xl">{movie.original_title}</h3>
-                  <p className="py-5">{movie.overview}</p>
+                  <h1 className="text-5xl font-bold">{movie?.title}</h1>
+                  <h3 className="text-2xl">{movie?.original_title}</h3>
+                  <p className="py-5">{movie?.overview}</p>
                   <div className="my-4">
                     <strong className="mb-2 inline-block">Generi</strong>
                     <ul className="flex flex-wrap gap-2">
-                      {movie.genres.map(genre => (
+                      {movie?.genres.map(genre => (
                         <li className="px-3 bg-neutral-800 rounded-full" key={genre.id}>{genre.name}</li>
                       ))}
                     </ul>
