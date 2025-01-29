@@ -20,6 +20,7 @@ const Card = ({ data }) => {
   }
 
   const flagApiEndpoint = `https://flagsapi.com/${language}/flat/32.png`
+  const imageApiEndpoint = `https://image.tmdb.org/t/p/w342`
 
   const getRatingStars = () => {
     const stars = [];
@@ -33,7 +34,7 @@ const Card = ({ data }) => {
     <div className="relative card">
       <img
         className="card-poster absolute -z-10"
-        src={`https://image.tmdb.org/t/p/w342/${data['poster_path']}`}
+        src={`${imageApiEndpoint}/${data['poster_path']}`}
         alt={data.title || data.name}
         onError={(e) => e.currentTarget.src = `https://via.assets.so/img.jpg?w=200&h=300&tc=blue&bg=#cecece`}
       />
