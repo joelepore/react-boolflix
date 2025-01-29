@@ -1,4 +1,5 @@
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaRegStar } from "react-icons/fa";
+
 
 const Card = ({ data }) => {
   let language = data['original_language'].toUpperCase();
@@ -29,14 +30,18 @@ const Card = ({ data }) => {
       break;
   }
 
-  const flagApiEndpoint = `https://flagsapi.com/${language}/flat/32.png`;
+  const flagApiEndpoint = `https://flagsapi.com/${language}/flat/16.png`;
   const imageApiEndpoint = `https://image.tmdb.org/t/p/w342`;
   const imagePlaceholderEndpoint = `https://placehold.co/400x600`;
 
   const getRatingStars = () => {
+    let i = 0;
     const stars = [];
-    for (let i = 0; i < rating; i++) {
-      stars.push(<FaStar />);
+    for (i = 0; i < 5; i++) {
+      if (i < rating)
+        stars.push(<FaStar />);
+      else
+        stars.push(<FaRegStar />);
     }
     return stars;
   }
