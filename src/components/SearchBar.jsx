@@ -17,7 +17,7 @@ const SearchBar = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button
-        onClick={() => searchDb(navigate('/search'))}
+        onClick={() => searchDb(() => navigate('/search'))}
         className="text-2xl px-2 bg-neutral-900 cursor-pointer"
       ><BiSearch /></button>
     </div>

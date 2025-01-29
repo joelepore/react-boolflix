@@ -45,7 +45,7 @@ export const GlobalContext = ({ children }) => {
     searchSeries();
     setIsLoading(false);
     setIsSearching(false);
-    navigateToSearchPage;
+    navigateToSearchPage();
   }
 
   useEffect(() => (
