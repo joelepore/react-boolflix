@@ -27,6 +27,7 @@ const ResultSection = ({ title, data }) => {
         spaceBetween={12}
         slidesPerView={6}
         navigation={true}
+        loop
       >
         {filteredTitles.map(item => (
           <SwiperSlide key={item.id}>
