@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const ContextProvider = createContext();
 
@@ -35,7 +36,7 @@ export const GlobalContext = ({ children }) => {
     setSeries(response.data.results);
   }
 
-  const searchDb = () => {
+  const searchDb = (navigateToSearchPage) => {
     setSelectedGenre(0);
     setSearch('');
     setIsLoading(true);
@@ -44,6 +45,7 @@ export const GlobalContext = ({ children }) => {
     searchSeries();
     setIsLoading(false);
     setIsSearching(false);
+    navigateToSearchPage;
   }
 
   useEffect(() => (
