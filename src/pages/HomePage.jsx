@@ -51,17 +51,17 @@ const HomePage = () => {
   useEffect(() => async () => fetchHomePageData(), []);
 
   return (
-    <main>
+    <>
       {isLoading ?
         <Loader /> :
         (
-          <>
+          <main className="container mx-auto">
             <ResultSection title="Film che altri stanno guardando" data={nowPlayingMovies} type="movie" />
             <ResultSection title="Film popolari" data={popularMovies} type="movie" />
             <ResultSection title="Serie popolari" data={popularShows} type="tv" />
-          </>
+          </main>
         )}
-    </main>
+    </>
   )
 }
 
