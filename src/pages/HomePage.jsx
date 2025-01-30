@@ -42,9 +42,13 @@ const HomePage = () => {
 
   const fetchHomePageData = async () => {
     setIsLoading(prev => true);
-    await fetchNowPlayingMovies();
-    await fetchPopularMovies();
-    await fetchPopularShows();
+    try {
+      await fetchNowPlayingMovies();
+      await fetchPopularMovies();
+      await fetchPopularShows();
+    } catch (err) {
+      console.error(err);
+    }
     setIsLoading(prev => false)
   }
 
