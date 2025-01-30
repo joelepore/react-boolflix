@@ -53,7 +53,12 @@ const HomePage = () => {
     setIsLoading(prev => false)
   }
 
-  useEffect(() => async () => fetchHomePageData(), []);
+  useEffect(() => {
+    const fetch = async () => {
+      fetchHomePageData()
+    }
+    fetch();
+  }, []);
 
   return (
     <>
