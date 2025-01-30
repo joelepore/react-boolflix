@@ -7,6 +7,10 @@ const SearchBar = () => {
   const { search, setSearch, searchDb } = useContext(ContextProvider);
   const navigate = useNavigate();
 
+  const handleSearch = () => {
+    searchDb(() => navigate('/search'));
+  }
+
   return (
     <div className="flex">
       <input
@@ -15,9 +19,12 @@ const SearchBar = () => {
         placeholder="Cerca"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onKeyUp={e => {
+          if (e.key === 'Enter') handleSearch();
+        }}
       />
       <button
-        onClick={() => searchDb(() => navigate('/search'))}
+        onClick={handleSearch}
         className="text-2xl px-2 bg-neutral-900 cursor-pointer"
       ><BiSearch /></button>
     </div>

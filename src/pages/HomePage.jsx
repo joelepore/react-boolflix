@@ -26,7 +26,6 @@ const HomePage = () => {
   }
 
   const fetchNowPlayingMovies = async () => {
-    console.log('fetching now playing movies...');
     const res = await axios.get(`${baseApiUrl}${nowPlayingMoviesEndpoint}`, options);
     setNowPlayingMovies(res.data.results);
   }
