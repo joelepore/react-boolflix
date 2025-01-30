@@ -44,7 +44,10 @@ const MovieDetailPage = () => {
     setIsLoading(false);
   }
 
-  useEffect(() => async () => fetchData(), []);
+  useEffect(() => {
+    const fetch = async () => fetchData();
+    fetch();
+  }, []);
 
   return (
     <>
