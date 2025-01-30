@@ -49,15 +49,17 @@ export const GlobalContext = ({ children }) => {
   }
 
   // Prendo tutti i generi dall'api e unisco gli array con elementi univoci
-  useEffect(() => (
-    async () => {
+  useEffect(() => {
+    const fetch = async () => {
       const movieGenres = await fetchGenres('movie');
       const tvGenres = await fetchGenres('tv');
       let genres = tvGenres.concat(movieGenres.filter(item2 => !tvGenres.some(item1 => item1.id === item2.id)))
       genres.sort((a, b) => a.name.localeCompare(b.name));
       setGenres(genres);
     }
-  ), []);
+
+    fetch();
+  }, []);
 
   const value = {
     movies,
