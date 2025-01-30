@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react"
+import app from '../config/env';
 import axios from "axios";
 
 export const ContextProvider = createContext();
@@ -13,11 +14,11 @@ export const GlobalContext = ({ children }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(0);
 
-  const baseApiUrl = `https://api.themoviedb.org/3`;
+  const { authKey, baseApiUrl } = app;
   const searchMovieEndpoint = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=it-IT&page=1&query=${search}`;
   const searchSeriesEndpoint = `https://api.themoviedb.org/3/search/tv?include_adult=false&language=it-IT&page=1&query=${search}`;
   const headers = {
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTg1MzllOTI0MzgxYjA4N2U5ZDhmNGI2MDdhYWYxZiIsIm5iZiI6MTczMjIxMzQ2Ny45MDcsInN1YiI6IjY3M2Y3YWRiZjQwMjgyZWJjYjliOTkzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JMcXNTyPvvTuKW413U-B5yxCOz4twSM5MNCCMWR76F4'
+    'Authorization': authKey
   }
 
   const fetchGenres = async (type) => {

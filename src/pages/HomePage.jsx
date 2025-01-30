@@ -4,10 +4,10 @@ import ResultSection from "../components/ResultSection";
 import { ContextProvider } from "../context/GlobalContext";
 import { useContext } from "react";
 import Loader from "../components/Loader";
+import app from "../config/env";
 
 const HomePage = () => {
-  const baseApiUrl = import.meta.env.VITE_BASE_API_URL;
-  const authKey = import.meta.env.VITE_API_AUTH_KEY;
+  const { baseApiUrl, authKey } = app;
   const { isLoading, setIsLoading } = useContext(ContextProvider);
   const nowPlayingMoviesEndpoint = `/movie/now_playing`;
   const popularMoviesEndpoint = `/movie/popular`;

@@ -3,11 +3,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from '../components/Loader'
 import Actor from "../components/Actor";
+import app from "../config/env";
 
 const MovieDetailPage = () => {
-  const baseApiUrl = import.meta.env.VITE_BASE_API_URL;
-  const apiKey = import.meta.env.VITE_API_AUTH_KEY;
-  const baseImgUrl = import.meta.env.VITE_BASE_IMG_URL;
+  const { baseApiUrl, authKey, baseImgUrl } = app;
   const { id } = useParams();
   const movieDetailEndpoint = `/movie/${id}`;
 
@@ -17,7 +16,7 @@ const MovieDetailPage = () => {
 
   const options = {
     headers: {
-      'Authorization': apiKey
+      'Authorization': authKey
     },
     params: {
       'language': 'it-IT'
